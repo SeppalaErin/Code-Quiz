@@ -164,6 +164,41 @@ function checkAnswer(){
     }
 }
 
+function loadGame(){
+    //styles page for the quiz
+    clearRows();
+
+    $("#row1").html("<div class =\"col-sm-8 offset-2\" id=\"col11\"><div class=\"card text-white bg-dark mb-3 text-center\"><div class=\"card-body\"><h4 class=\"card-title\" id=\"question-title\">Question</h4><i><p class=\"card-text\" id=\"question-text\"></p></i></div></div></div><div class = \"col-sm-1\" id=\"col12\"><div class=\"card text-white bg-dark mb-3 text-center\"><div class=\"card-body\"><h6 class=\"card-title\">Time Left</h6><p class=\"card-text\" id=\"timer-text\"></p></div></div></div>");
+
+    $("#row2").html("<div class=\"col-sm-6\" id=\"col21\"><div class=\"card text-dark bg-light mb-3 text-center\"><div class=\"card-body\"><p class=\"card-text\" id=\"a-text\"></p><button type=\"button\" class=\"btn btn-secondary\" id=\"a-button\" value=\"a\">A</button></div></div></div><div class=\"col-sm-6\" id=\"col22\"><div class=\"card text-dark bg-light mb-3 text-center\"><div class=\"card-body\"><p class=\"card-text\" id=\"b-text\"></p><button type=\"button\" class=\"btn btn-secondary\" id=\"b-button\" value=\"b\">B</button></div></div></div>");
+
+    $("#row3").html("<div class=\"col-sm-6\" id=\"col31\"><div class=\"card text-dark bg-light mb-3 text-center\"><div class=\"card-body\"><p class=\"card-text\" id=\"c-text\"></p><button type=\"button\" class=\"btn btn-secondary\" id=\"c-button\" value=\"c\">C</button></div></div></div><div class=\"col-sm-6\" id=\"col32\"><div class=\"card text-dark bg-light mb-3 text-center\"><div class=\"card-body\"><p class=\"card-text\" id=\"d-text\"></p><button type=\"button\" class=\"btn btn-secondary\" id=\"d-button\" value=\"d\">D</button></div></div></div>");
+
+
+    $("h1").replaceWith("<h2>Code Quiz</h2>");
+}
+
+function timeOut(){
+    //styles page for game over
+    //triggers when timer hits zero
+    clearRows();
+
+    $("#row2").html("<div class =\"col-sm-8 mx-auto\"><div class=\"card text-white bg-dark mb-3 text-center\"><div class=\"card-body\"><h2 class=\"card-title\" id=\"question-title\">Game Over - Timed Out</h2><i><p class=\"card-text\" id=\"question-text\">Would you like to try again?</p></i></div></div></div>");
+
+    $("#row3").html("<div class=\"d-grid gap-2 col-2 mx-auto\"><button type=\"button\" class=\"btn btn-secondary\" id=\"main-menu-button\">Main Menu</button></div>");
+
+    $("h1").replaceWith("<h2>Code Quiz</h2>");
+}
+
+function loadScore(){
+    //styles page to match log_score template
+    clearRows();
+}
+
+function clearRows(){
+    $(".row").empty();
+}
+
 //runtime
 $("#start-button").on("click", gameStart);
 // $("#score-button").on("click", loadScore);
