@@ -98,3 +98,45 @@ var questionList = [question1, question2, question3, question4, question5, quest
 // After 10 questions have been answered or if the timer ran out, end the quiz
 // When the Quiz ends, prompt the user to save their initials withtheir score and is saved to local highscores
 // After highscore prompt, return to main screen
+
+var q = 0;
+var rightAnswer;
+var tval;
+var count;
+
+// Functions
+function gameStart(){
+    //main runtime function
+    loadGame();
+    q = 0;
+    rightAnswer = null;
+    getQuestion(q);
+    timer();
+
+}
+
+function timer(){
+    count = 90;
+    $("#timer-text").text(count);
+    tval = setInterval(function(){
+        if (count > 0){
+            count--;
+            $("#timer-text").text(count);
+            $("timer-text").attr("color", "black");
+        }
+        else {
+            clearInterval(tval);
+            timeOut();
+        }
+    }, 1000);
+
+}
+
+//runtime
+$("#start-button").on("click", gameStart);
+// $("#score-button").on("click", loadScore);
+$(document).on("click", "#main-menu-button", function(){location.reload()});
+$(document).on("click", "#a-button", checkAnswer);
+$(document).on("click", "#b-button", checkAnswer);
+$(document).on("click", "#c-button", checkAnswer);
+$(document).on("click", "#d-button", checkAnswer);
