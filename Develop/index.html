@@ -8,20 +8,54 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   
-  <body>
+<body>
 
     <header class="container-fluid text-center" id="title">
         <h1>Coding Quiz</h1>
     </header>
 
+    <main>
+
+      <div class = "row" id = "row1">
+<!-- Quiz Question will be here -->
+      </div>
+      <br>
+
 <!-- Start Button -->
+
+      <div class= "row" id = "row2">
+        <div class="d-grid gap-2 col-2 mx-auto">
+          <button type="button" class="btn btn-dark" id="start-button">Start</button>
+        </div>
+      </div> 
+      <br>
 
 <!-- Highscores Button -->
 
-<!-- Rules Info -->
 
+      <div class = "row" id = "row3">
+        <div class = "d-grid col-2 mx-auto">
+          <button type="button" class="btn btn-light" id="score-button">Highscores</button>
+        </div>
+      </div>
+      <br>
+
+<!-- Rules Info -->
+    
+      <div class= "row" id = "row4">
+        <div class="d-grid gap-2 col-2 mx-auto">
+          <div class="card" style="width: 19rem;">
+            <div class="card-body">
+              <h5 class="card-title text-center">Rules</h5>
+              <p class="card-text text-center">Answer 10 Questions within 90 seconds. Each question answered incorrectly will deduct 10 seconds from the timer. Your score will be determined based on time remaining.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
