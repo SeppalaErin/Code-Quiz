@@ -96,13 +96,14 @@ var questionList = [question1, question2, question3, question4, question5, quest
 // When Quiz starts, the user is prompted 10 questions
 // When the user answers a question, the next question is prompted. If the answer was wrong, deduct 10 seconds from timer
 // After 10 questions have been answered or if the timer ran out, end the quiz
-// When the Quiz ends, prompt the user to save their initials withtheir score and is saved to local highscores
+// When the Quiz ends, prompt the user to save their initials with their score and is saved to local highscores
 // After highscore prompt, return to main screen
 
 var q = 0;
 var rightAnswer;
 var tval;
 var count;
+var initials;
 
 // Functions
 function gameStart(){
@@ -140,6 +141,7 @@ function getQuestion(i){
     $("#c-text").text(currentQ.ansC);
     $("#d-text").text(currentQ.ansD);
     rightAnswer = currentQ.value;
+    // reactivates buttons that were disabled last question
     $("#a-button").removeAttr("disabled");
     $("#b-button").removeAttr("disabled");
     $("#c-button").removeAttr("disabled");
@@ -168,7 +170,7 @@ function loadGame(){
     //styles page for the quiz
     clearRows();
 
-    $("#row1").html("<div class =\"col-sm-8 offset-2\" id=\"col11\"><div class=\"card text-white bg-dark mb-3 text-center\"><div class=\"card-body\"><h4 class=\"card-title\" id=\"question-title\">Question</h4><i><p class=\"card-text\" id=\"question-text\"></p></i></div></div></div><div class = \"col-sm-1\" id=\"col12\"><div class=\"card text-white bg-dark mb-3 text-center\"><div class=\"card-body\"><h6 class=\"card-title\">Time Left</h6><p class=\"card-text\" id=\"timer-text\"></p></div></div></div>");
+    $("#row1").html("<div class = \"col-sm-2\" id=\"col12\"><div class=\"card text-white bg-dark mb-3 text-center\"><div class=\"card-body\"><h6 class=\"card-title\">Time Left</h6><p class=\"card-text\" id=\"timer-text\"></p></div></div></div><div class =\"col-sm-8\" id=\"col11\"><div class=\"card text-white bg-dark mb-3 text-center\"><div class=\"card-body\"><h4 class=\"card-title\" id=\"question-title\">Question</h4><i><p class=\"card-text\" id=\"question-text\"></p></i></div></div></div><div class = \"col-sm-2\" id=\"col12\"><div class=\"card text-white bg-dark mb-3 text-center\"><div class=\"card-body\"><h6 class=\"card-title\">Score</h6><p class=\"card-text\" id=\"score-text\"></p></div></div></div>");
 
     $("#row2").html("<div class=\"col-sm-6\" id=\"col21\"><div class=\"card text-dark bg-light mb-3 text-center\"><div class=\"card-body\"><p class=\"card-text\" id=\"a-text\"></p><button type=\"button\" class=\"btn btn-secondary\" id=\"a-button\" value=\"a\">A</button></div></div></div><div class=\"col-sm-6\" id=\"col22\"><div class=\"card text-dark bg-light mb-3 text-center\"><div class=\"card-body\"><p class=\"card-text\" id=\"b-text\"></p><button type=\"button\" class=\"btn btn-secondary\" id=\"b-button\" value=\"b\">B</button></div></div></div>");
 
@@ -176,6 +178,12 @@ function loadGame(){
 
 
     $("h1").replaceWith("<h2>Code Quiz</h2>");
+}
+
+function quizFinish(){
+    //function for when the quiz is finished
+    //triggers when 10 questions are answered
+
 }
 
 function timeOut(){
@@ -190,9 +198,17 @@ function timeOut(){
     $("h1").replaceWith("<h2>Code Quiz</h2>");
 }
 
-function loadScore(){
+function loadHighScore(){
     //styles page to match log_score template
     clearRows();
+    
+    $("#row1").html("<div class =\"col-sm-8 offset-2\" id=\"col11\"><div class=\"card text-white bg-dark mb-3 text-center\"><div class=\"card-body\"><h4 class=\"card-title\" id=\"highScore-title\">Highscores</h4><i><p class=\"card-text\" id=\"highScore-text\"></p></i></div></div></div>");
+
+    $("#row2").html("<div class=\"col-sm-8 offset-2\" id=\"col21\"><div class=\"card text-dark bg-light mb-3 text-center\"><div class=\"card-body\"><p class=\"card-text\" id=\"highScore-text\"></p></div></div></div>");
+
+    $("#row3").html("<div class=\"d-grid gap-2 col-2 mx-auto\"><button type=\"button\" class=\"btn btn-secondary\" id=\"main-menu-button\">Main Menu</button></div>");
+
+    $("h1").replaceWith("<h2>Code Quiz</h2>");
 }
 
 function clearRows(){
@@ -201,7 +217,7 @@ function clearRows(){
 
 //runtime
 $("#start-button").on("click", gameStart);
-// $("#score-button").on("click", loadScore);
+$("#score-button").on("click", loadHighScore);
 $(document).on("click", "#main-menu-button", function(){location.reload()});
 $(document).on("click", "#a-button", checkAnswer);
 $(document).on("click", "#b-button", checkAnswer);
