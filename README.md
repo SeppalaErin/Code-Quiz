@@ -4,4 +4,4 @@ Application that quizzes the user, prompting them questions that should test the
 
 https://aseppala98.github.io/Code-Quiz/Develop/index.html
 
-![Picture of Code-Quiz](./Assets/images/Code-Quiz-img.png)
+![Picture of Code-Quiz](./Assets/Code-Quiz-img.png)
