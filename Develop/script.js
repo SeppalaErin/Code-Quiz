@@ -132,6 +132,38 @@ function timer(){
 
 }
 
+function getQuestion(i){
+    var currentQ = questionList[i];
+    $("#question-text").text(currentQ.qText);
+    $("#a-text").text(currentQ.ansA);
+    $("#b-text").text(currentQ.ansB);
+    $("#c-text").text(currentQ.ansC);
+    $("#d-text").text(currentQ.ansD);
+    rightAnswer = currentQ.value;
+    $("#a-button").removeAttr("disabled");
+    $("#b-button").removeAttr("disabled");
+    $("#c-button").removeAttr("disabled");
+    $("#d-button").removeAttr("disabled");
+}
+
+function checkAnswer(){
+    let userAnswer = $(this).attr("value");
+    if (userAnswer === rightAnswer){
+        q++;
+        getQuestion(q);
+    }
+    else {
+        console.log("else");
+        count -= 10;
+        $(this).attr("disabled", "true");
+        if (count < 0){
+            count = 0;
+        }
+        $("#timer-text").text(count);
+        $("timer-text").attr("color", "red");
+    }
+}
+
 //runtime
 $("#start-button").on("click", gameStart);
 // $("#score-button").on("click", loadScore);
